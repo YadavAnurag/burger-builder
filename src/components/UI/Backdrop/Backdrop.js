@@ -6,7 +6,7 @@ const Backdrop = (props) => {
   return (
     <div>
       {props.show ? (
-        <div className={classes.Backdrop} onClick={props.closeModal} ></div>
+        <div className={classes.Backdrop} onClick={props.clicked} ></div>
       ) : null}
     </div>
   );
