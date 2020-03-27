@@ -1,0 +1,21 @@
+.OrderSummary{
+  display: flex;
+  flex-flow: column;
+}
+
+.OrderSummary ul{
+  margin: 0;
+}
+
+.OrderSummary p{
+  margin: 1rem 0;
+}
+
+.OrderSummary button {
+  display: block;
+  font: inherit;
+  padding: 0.5rem 1rem;
+  margin: 0 5px;
+  cursor: pointer;
+  outline: none;
+}

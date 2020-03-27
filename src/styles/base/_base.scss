@@ -12,6 +12,7 @@ body {
 
 button {
   cursor: pointer;
+  border-radius: 2rem;
 }
 button:disabled {
   cursor: default;
