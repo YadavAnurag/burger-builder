@@ -1,5 +1,11 @@
 @import '../../styles/styles.scss';
 
 .Content{
-  margin-top: 72px;
+  max-width: 60rem;
+  margin: 5.6rem auto 0 auto;
+}
+@media(min-width: $desktop-breakpoint){
+  .Content{
+    width: 100vw;
+  }
 }

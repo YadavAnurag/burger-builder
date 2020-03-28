@@ -5,9 +5,11 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/OrderSummary/OrderSummary';
+import classes from './BurgerBuilder.module.scss';
+import axios from '../../axios-orders'; 
+
 
 const INGREDIENT_PRICES = {salad: 0.5, cheese: 0.4, meat: 1.3, bacon: 0.7};
-
 
 class BurgerBuilder extends Component{
   state = {
@@ -16,7 +18,7 @@ class BurgerBuilder extends Component{
     },
     totalPrice: 4,
     purchasable: false,
-    purchasing: false
+    purchasing: false,
   };
 
 
@@ -67,7 +69,30 @@ class BurgerBuilder extends Component{
     this.setState({purchasing: false});
   };
   purchasingContinueHandler = () => {
-    alert('you continue');
+    //alert('you continue');
+
+    const order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice, // never send price to server, always calculate price on server
+      customer: {
+        name: 'Anu',
+        email: 'anu@gmail.com',
+        address: {
+          street: 'Sakrawal EAST',
+          pinCode: '224190',
+          state: 'Uttar Pradesh'
+        }
+      },
+      deliveryMethod: 'fastest'
+    };
+    axios.post('/orders.json', order)
+      .then(response => {
+        this.setState({purchasing: false});
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({purchasing: false});
+      });
   }
 
   render(){
@@ -86,18 +111,19 @@ class BurgerBuilder extends Component{
             ingredients={this.state.ingredients}
             price={this.state.totalPrice}
             cancelPurchase={this.purchasingCancelHandler}
-            continuePurchase={this.purchasingContinueHandler}
-          />
+            continuePurchase={this.purchasingContinueHandler} />
         </Modal>
-        <Burger ingredients={this.state.ingredients} />
-        <BuildControls 
-          addIngredient={this.addIngredientHandler} 
-          removeIngredient={this.removeIngredientHandler}
-          disabledInfo={disabledInfo}
-          purchasable={this.state.purchasable}
-          price={this.state.totalPrice}
-          ordered={this.purchasingHandler}
-        />
+        <div className={classes.BurgerBuilder}>
+          <Burger ingredients={this.state.ingredients} />
+          <BuildControls 
+            addIngredient={this.addIngredientHandler} 
+            removeIngredient={this.removeIngredientHandler}
+            disabledInfo={disabledInfo}
+            purchasable={this.state.purchasable}
+            price={this.state.totalPrice}
+            ordered={this.purchasingHandler}
+          />
+        </div>
       </Auxiliary>
     );
   }
