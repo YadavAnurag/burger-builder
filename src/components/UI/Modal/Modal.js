@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 import classes from './Modal.module.scss';
 import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
@@ -33,4 +34,9 @@ class Modal extends React.Component {
   }
 }
 
+Modal.propTypes = {
+  show: propTypes.bool,
+  loading: propTypes.bool,
+  clicked: propTypes.func
+};
 export default Modal;
