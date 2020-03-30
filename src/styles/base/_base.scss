@@ -20,3 +20,8 @@ button:disabled {
 .is-active {
   font-weight: bold;
 }
+.centerDiv{
+  display:flex;
+  flex-flow:row;
+  justify-content:center
+}

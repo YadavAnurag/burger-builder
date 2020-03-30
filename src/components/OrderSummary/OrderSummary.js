@@ -31,8 +31,8 @@ class OrderSummary extends React.Component {
           </ul>
           <p><strong>Total Price: {this.props.price.toFixed(2)}</strong></p>
           <p>Continue to Checkout? </p>
-          <div style={{display:'flex', flexFlow:'row', justifyContent:'center'}}>
-            <Button btnType={'Danger'} clicked={this.props.cancelPurchase} className={classes.Danger}>Cancel</Button>
+          <div className={classes.centerDiv}>
+            <Button btnType={'Danger'} clicked={this.props.cancelPurchase}>Cancel</Button>
             <Button btnType={'Success'} clicked={this.props.continuePurchase} >Continue</Button>
           </div>
         </div>

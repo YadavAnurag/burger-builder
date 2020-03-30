@@ -33,7 +33,6 @@ const withErrorHandler = (WrappedComponent, axios) => {
       //   axios.interceptors.response.use(response => response, error => this.setState({error}));
       // }
       componentWillUnmount(){
-        console.log(this.reqInterceptor, this.resInterceptor);
         axios.interceptors.request.eject(this.reqInterceptor);
         axios.interceptors.response.eject(this.resInterceptor);
       }
