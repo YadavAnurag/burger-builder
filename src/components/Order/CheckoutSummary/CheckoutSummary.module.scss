@@ -1,12 +1,18 @@
+@import '../../../styles/styles.scss';
+
 .CheckoutSummary{
+  color: white;
   text-align: center;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
+  background: $primary;
+  padding-bottom: 2rem;
+  padding-top: 0.6rem;
 }
 
 @media(min-width: 600px){
   .CheckoutSummary{
-    width: 500px;
+    width: 100%;
   }
 }
 

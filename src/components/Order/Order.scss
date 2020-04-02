@@ -1,0 +1,24 @@
+@import '../../styles/styles.scss';
+
+.Order{
+  background-color: white;
+  color: $primary;
+  width: 95%;
+  // box-shadow: 0 0px 2px #ccc;
+  padding: 0.8rem;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+}
+
+.Ingredients{
+  display: inline-block;
+  span{
+    color: white;
+    display: inline-block;
+    text-transform: capitalize;
+    border: 1px solid #eee;
+    background: $primary;
+    padding: 0 $s-size;
+    border-radius: 0.35rem;
+  }
+}

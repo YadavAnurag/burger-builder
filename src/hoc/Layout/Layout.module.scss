@@ -3,9 +3,11 @@
 .Content{
   max-width: 60rem;
   margin: 5.6rem auto 0 auto;
+  min-height: 82vh;
 }
 @media(min-width: $desktop-breakpoint){
   .Content{
     width: 100vw;
+    min-height: 82vh;
   }
 }

@@ -4,7 +4,7 @@ import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
-import OrderSummary from '../../components/OrderSummary/OrderSummary';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './BurgerBuilder.module.scss';
 import axios from '../../axios-orders'; 
@@ -77,34 +77,11 @@ class BurgerBuilder extends Component{
   };
   purchasingContinueHandler = () => {
     //alert('you continue');
-    // this.setState({loading: true});
-
-    // const order = {
-    //   ingredients: this.state.ingredients,
-    //   price: this.state.totalPrice, // never send price to server, always calculate price on server
-    //   customer: {
-    //     name: 'Anu',
-    //     email: 'anu@gmail.com',
-    //     address: {
-    //       street: 'Sakrawal EAST',
-    //       pinCode: '224190',
-    //       state: 'Uttar Pradesh'
-    //     }
-    //   },
-    //   deliveryMethod: 'fastest'
-    // };
-    // axios.post('/orders.json', order)
-    //   .then(response => {
-    //     this.setState({loading: false, purchasing: false});
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //     this.setState({loading: false, purchasing: false});
-    //   });
     const queryParams = [];
     for(let i in this.state.ingredients){
       queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
     }
+    queryParams.push('price=' + this.state.totalPrice);
     const queryString = queryParams.join('&');
     this.props.history.push({
       pathname: '/checkout',
@@ -150,7 +127,6 @@ class BurgerBuilder extends Component{
     if(this.state.loading === true){
       orderSummary = <Spinner />;
     };
-
 
     return (
       <Auxiliary>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
-import Button from '../UI/Button/Button';
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
+import Button from '../../UI/Button/Button';
 import classes from './OrderSummary.module.scss';
 
 
