@@ -26,6 +26,7 @@ class ContactData extends React.Component{
         value: '' 
       })
     },
+    formIsValid: false,
     loading: false
   }
 
@@ -70,8 +71,15 @@ class ContactData extends React.Component{
     const updatedFormElement = {...updatedOrderForm[inputIdentifier]};
     updatedFormElement.value = event.target.value;
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    updatedFormElement.touched = true;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
-    this.setState({orderForm: updatedOrderForm});
+
+    let formIsValid = true;
+    for(let inputIdentifier in updatedOrderForm){
+      formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+    }
+
+    this.setState({orderForm: updatedOrderForm, formIsValid});
   }
 
   render(){
@@ -90,11 +98,13 @@ class ContactData extends React.Component{
             elementType={formElement.config.elementType} 
             elementConfig={formElement.config.elementConfig} 
             value={formElement.config.value}
+            invalid={!formElement.config.valid}
+            touched={formElement.config.touched}
             changed={(event) => this.inputChangeHandler(event, formElement.id)}
           />
         ))}
         <div className='centerDiv'>
-          <Button btnType='Success' clicked={this.orderHandler} >Order</Button>
+          <Button btnType='Success' clicked={this.orderHandler} disabled={!this.state.formIsValid} >Order</Button>
         </div>
       </form>
     );

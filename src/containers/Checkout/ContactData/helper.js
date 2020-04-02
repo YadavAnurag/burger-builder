@@ -8,7 +8,8 @@ const createObject = ({elementType, elementConfig, value}) => {
       minLength: 2,
       maxLength: 20
     },
-    valid: false
+    valid: false,
+    touched: false
   });
 }
 
