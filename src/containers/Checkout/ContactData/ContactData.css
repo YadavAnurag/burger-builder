@@ -1,10 +1,14 @@
 .ContactData{
-  margin: 20px auto;
-  width: 80%;
+  margin: 1rem auto;
+  width: 100%;
   text-align: center;
   box-shadow: 0 2px 3px #ccc;
   border: 1px solid #eee;
   padding: 1rem;
+}
+
+.ContactData .heading{
+  color: white;
 }
 
 .ContactData input{

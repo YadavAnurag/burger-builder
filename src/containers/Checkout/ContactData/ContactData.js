@@ -3,17 +3,28 @@ import React from 'react';
 import axios from '../../../axios-orders';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Input from '../../../components/UI/Input/Input';
 import './ContactData.css';
-
+import createObject from './helper';
 
 class ContactData extends React.Component{
   state = {
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      pinCode: '',
-      state: ''
+    orderForm: {
+      name: createObject({elementType: 'input', elementConfig: {type: 'text', placeholder: 'Name'}, value: ''}),
+      email: createObject({elementType: 'input', elementConfig: {type: 'email', placeholder: 'Email'}, value: ''}),
+      street: createObject({elementType: 'input', elementConfig: {type: 'text', placeholder: 'Street'}, value: ''}),
+      pinCode: createObject({elementType: 'input', elementConfig: {type: 'text', placeholder: 'Pin Code'}, value: ''}),
+      state: createObject({elementType: 'input', elementConfig: {type: 'text', placeholder: 'State'}, value: ''}),
+      deliveryMethod: createObject({
+        elementType: 'select', 
+        elementConfig:{
+          options: [
+            {value: 'fastest', displayValue: 'Fastest'},
+            {value: 'cheapest', displayValue: 'Cheapest'}
+          ]
+        },
+        value: '' 
+      })
     },
     loading: false
   }
@@ -47,15 +58,33 @@ class ContactData extends React.Component{
       });
   }
 
-  render(){
+  inputChangeHandler = (event, inputIdentifier) => {
+    const updatedOrderForm = { ...this.state.orderForm };
+    const updatedFormElement = {...updatedOrderForm[inputIdentifier]};
+    updatedFormElement.value = event.target.value;
+    updatedOrderForm[inputIdentifier] = updatedFormElement;
+    this.setState({orderForm: updatedOrderForm});
+  }
 
+  render(){
+    const formElementsArray = [];
+    for(let key in this.state.orderForm){
+      formElementsArray.push({
+        id: key,
+        config: this.state.orderForm[key]
+      });
+    }
     let form = (
       <form>
-        <input type="text" name="name" placeholder="Your Name"/>
-        <input type="email" name="email" placeholder="Your Email"/>
-        <input type="street" name="street" placeholder="Street"/>
-        <input type="text" name="street" placeholder="Pin Code"/>
-        <input type="text" name="state" placeholder="State"/>
+        {formElementsArray.map(formElement => (
+          <Input 
+            key={formElement.id}
+            elementType={formElement.config.elementType} 
+            elementConfig={formElement.config.elementConfig} 
+            value={formElement.config.value}
+            changed={(event) => this.inputChangeHandler(event, formElement.id)}
+          />
+        ))}
         <div className='centerDiv'>
           <Button btnType='Success' clicked={this.orderHandler} >Order</Button>
         </div>
@@ -67,7 +96,7 @@ class ContactData extends React.Component{
 
     return (
       <div className='ContactData'>
-        <h4>Enter your Contact Data</h4>
+        <h4 className='heading'>Enter your Contact Data</h4>
         {form}
       </div>
     );
