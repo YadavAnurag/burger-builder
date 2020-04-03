@@ -75,7 +75,6 @@ class BurgerBuilder extends Component{
     this.setState({purchasing: false});
   };
   purchasingContinueHandler = () => {
-    //alert('you continue');
     const queryParams = [];
     for(let i in this.state.ingredients){
       queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
