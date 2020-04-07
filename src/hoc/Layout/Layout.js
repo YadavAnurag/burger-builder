@@ -3,7 +3,6 @@ import React from 'react';
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
-import Footer from '../../components/Navigation/Footer/Footer';
 import classes from './Layout.module.scss';
 
 
