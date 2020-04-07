@@ -10,7 +10,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './BurgerBuilder.module.scss';
 import axios from '../../axios-orders'; 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../store/actions';
+import * as burgerBuilderActions from '../../store/actions/index';
 
 
 class BurgerBuilder extends Component{
@@ -103,7 +103,7 @@ const mapStateToProps = (state) => ({
   price: state.totalPrice
 });
 const mapDispatchToProps = (dispatch) => ({
-  onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENTS, ingredientName: ingName}),
-  onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENTS, ingredientName: ingName})
+  onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
+  onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
