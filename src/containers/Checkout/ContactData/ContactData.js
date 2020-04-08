@@ -85,6 +85,7 @@ class ContactData extends React.Component{
     }
     let form = (
       <form>
+        <h4 className='heading'>Enter your Contact Data</h4>
         {formElementsArray.map(formElement => (
           <Input 
             key={formElement.id}
@@ -107,7 +108,6 @@ class ContactData extends React.Component{
 
     return (
       <div className='ContactData'>
-        <h4 className='heading'>Enter your Contact Data</h4>
         {form}
       </div>
     );

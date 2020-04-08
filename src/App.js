@@ -7,6 +7,7 @@ import classes from './App.module.scss';
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
 import Footer from './components/Navigation/Footer/Footer';
+import Auth from './containers/Auth/Auth';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path='/checkout' component={Checkout} />
           <Route path='/orders' component={Orders} />
+          <Route path='/auth' component={Auth} />
           <Route path='/' exact component={BurgerBuilder} />
         </Switch>
       </Layout>

@@ -1,0 +1,22 @@
+.Auth{
+  margin: 1rem auto;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  padding: 1rem;
+}
+
+.Auth .heading{
+  color: white;
+}
+
+.Auth input{
+  display: block;
+}
+
+@media (min-width: 600px){
+  .Auth{
+    width: 500px;
+  }
+}

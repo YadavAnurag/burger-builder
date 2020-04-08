@@ -11,7 +11,7 @@ const Input = (props) => {
 
   switch(props.elementType){
     case ('input'):
-      inputElement = <input className={inputClasses} {...props.elementConfig} value={props.value} onChange={props.changed}/>;
+      inputElement = <input className={inputClasses} {...props.elementConfig} value={props.value} onChange={props.changed} autoComplete="on"/>;
       break;
     case ('textarea'):
       inputElement = <textarea className={inputClasses} {...props.elementConfig} value={props.value} onChange={props.changed}></textarea>;
