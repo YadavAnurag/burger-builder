@@ -11,6 +11,10 @@
   color: white;
 }
 
+.Auth p{
+  color: white;
+}
+
 .Auth input{
   display: block;
 }

@@ -1,11 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility/utility';
 
-const orderReducerDefaultState = {
-  orders: [],
-  loading: false,
-  purchased: true
-};
+
 const purchaseInit = (state, action) => {
   return updateObject(state, {purchased: false});
 };
@@ -36,7 +32,11 @@ const fetchOrdersFail = (state, action) => {
   return updateObject(state, {loading: false});
 };
 
-
+const orderReducerDefaultState = {
+  orders: [],
+  loading: false,
+  purchased: true
+};
 const orderReducer = (state = orderReducerDefaultState, action) => {
   switch(action.type){
     case actionTypes.PURCHASE_INIT: return purchaseInit(state, action);

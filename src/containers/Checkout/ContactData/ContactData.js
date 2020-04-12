@@ -43,7 +43,7 @@ class ContactData extends React.Component{
       price: this.props.price, // never send price to server, always calculate price on server
       orderData: formData
     };
-    this.props.onOrderBurger(order);
+    this.props.onOrderBurger(order, this.props.token);
   }
 
   checkValidity = (value, rules) => {
@@ -117,9 +117,10 @@ class ContactData extends React.Component{
 const mapStateToProps = (state) => ({
   ings: state.burgerBuilder.ingredients,
   price: state.burgerBuilder.totalPrice,
-  loading: state.order.loading
+  loading: state.order.loading,
+  token: state.auth.token
 });
 const mapDispatchToProps = (dispatch) => ({
-  onOrderBurger: (orderData) => dispatch(orderActions.purchaseBurger(orderData))
+  onOrderBurger: (orderData, token) => dispatch(orderActions.purchaseBurger(orderData, token))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));

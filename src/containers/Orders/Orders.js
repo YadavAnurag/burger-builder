@@ -11,7 +11,7 @@ import './Orders.css';
 class Orders extends React.Component{
 
   componentDidMount(){
-    this.props.onFetchOrders();
+    this.props.onFetchOrders(this.props.token);
   }
 
   render(){
@@ -42,11 +42,12 @@ class Orders extends React.Component{
 
 const mapStateToProps = (state) => ({
   orders: state.order.orders,
-  loading: state.order.loading
+  loading: state.order.loading,
+  token: state.auth.token
 });
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchOrders: () => dispatch(actions.fetchOrders())
+    onFetchOrders: (token) => dispatch(actions.fetchOrders(token))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Orders, axios));
