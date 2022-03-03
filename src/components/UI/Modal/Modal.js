@@ -12,9 +12,6 @@ class Modal extends React.Component {
     if(nextProps.loading !== this.props.loading) return true;
     return nextProps.show !== this.props.show; 
   }
-  UNSAFE_componentWillUpdate(){
-    console.log('[Modal] willUpdate');
-  }
 
   render(){
     return (

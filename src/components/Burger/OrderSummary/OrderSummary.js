@@ -7,9 +7,6 @@ import classes from './OrderSummary.module.scss';
 
 class OrderSummary extends React.Component {
 
-  UNSAFE_componentWillUpdate(){
-    console.log('[OrderSummary] will update');
-  }
 
   render(){
     const ingredientSummary = Object.keys(this.props.ingredients)
